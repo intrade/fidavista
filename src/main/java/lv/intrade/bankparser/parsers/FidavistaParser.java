@@ -24,7 +24,10 @@ import java.util.regex.Pattern;
  * Available for version 1.01
  */
 
+// Класс публичен и может быть переопеределен напрямую, теряется смысл интерфейса, но вполне сойдет за
+// default образец или реализацию для приязки фреймворка из вне проекта
 public class FidavistaParser implements BankParser {
+
     private File file;
     private ReportFactory factory;
     private Document document;
@@ -32,6 +35,7 @@ public class FidavistaParser implements BankParser {
     private Node rNode;
     private Element aElement;
 
+    // Комментарии в интерфейсе
     @Override
     public void setFile(File file) {
         this.file = file;
@@ -53,6 +57,7 @@ public class FidavistaParser implements BankParser {
         rNode = nodeList.item(0);
         aElement = (Element) rNode;
 
+        // отличная идея сегментировать парсинг на части
         setReportBaseFields(document);
 
         setReportPeriod(document);
@@ -64,6 +69,7 @@ public class FidavistaParser implements BankParser {
         collectTransactions(document);
     }
 
+    // немного сложный метод, лучше его сегментиовать
     private void collectTransactions(Document document) {
         NodeList nList = document.getElementsByTagName("TrxSet");
         for (int temp = 0; temp < nList.getLength(); temp++)
@@ -71,6 +77,20 @@ public class FidavistaParser implements BankParser {
             Node node = nList.item(temp);
             if (node.getNodeType() == Node.ELEMENT_NODE)
             {
+
+                /*
+                    Тут все хорошо, но вопрос вкуса - бы предпочел вынести в отдельный метод parseTransaction(Element node)
+                    Так же можно для красоты можно написать метод getContent(Element e, String tagName) - его и протестировать будет проще
+                    private String getContent(Element e, String tagName) {
+                        Node node = e.getElementsByTagName("tagName").item(0);
+
+                        // что делать если значения нету можно решить
+                        return Objects.nonNull(node) ? node.getTextContent() : "";
+                    }
+                    Тогда вызов будет
+                    trx.setCode(getContent(eElement, "TypeCode"));
+                 */
+
                 Transaction trx = new Transaction();
                 Element eElement = (Element) node;
                 trx.setCode(eElement.getElementsByTagName("TypeCode").item(0).getTextContent());
@@ -86,6 +106,8 @@ public class FidavistaParser implements BankParser {
                 );
                 trx.setBookDate(Date.valueOf(eElement.getElementsByTagName("BookDate").item(0).getTextContent()));
                 String fullDate;
+
+                // регекс паттерны лучше отдельно вынести как константу, для наглядности
                 Pattern p = Pattern.compile("\\s\\d+:\\d+");
                 Matcher m = p.matcher(eElement.getElementsByTagName("ValueDate").item(0).getTextContent());
                 if (m.find()){
@@ -117,6 +139,9 @@ public class FidavistaParser implements BankParser {
                 );
                 trx.setAgent(agent);
                 trx.setTrxCurrency(eElement.getElementsByTagName("Ccy").item(0).getTextContent());
+
+                // А вот так лучше не делать точно. Вообще не очевидно,
+                // что он будет добавлять к списку транзакций
                 factory.setReportTrx(trx);
             }
         }

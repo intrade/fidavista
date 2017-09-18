@@ -2,6 +2,9 @@ package lv.intrade.bankparser;
 
 import java.sql.Date;
 
+// Мне кажется, в твоем случае, фабрика должна называтся билдером,
+// все же паттерн фабрика это немного иное, а билдер оно самое
+// https://dzone.com/articles/design-patterns-the-builder-pattern
 public class ReportFactory {
     private static ReportFactory ourInstance = new ReportFactory();
     private Report report;
