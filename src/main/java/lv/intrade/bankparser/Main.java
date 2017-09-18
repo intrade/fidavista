@@ -1,5 +1,6 @@
 package lv.intrade.bankparser;
 
+import lv.intrade.bankparser.domains.Report;
 import lv.intrade.bankparser.parsers.BankParser;
 import lv.intrade.bankparser.parsers.FidavistaParser;
 import org.xml.sax.SAXException;
@@ -13,16 +14,16 @@ public class Main {
 
     public static void main(String[] args) {
             BankParser parser = new FidavistaParser();
-            parser.setFile(xmlFile);
-            try {
-                Report report = parser.getReport();
-                System.out.println(report);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            }
+        Report report = null;
+        try {
+            report = parser.getReport(xmlFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        System.out.println(report);
     }
 }
