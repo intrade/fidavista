@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FIDAVISTA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bankasoc.lv/fidavista/fidavista0101.xsd">
+    <Header>
+        <Timestamp>20130320115025287</Timestamp>
+        <From>SGW</From>
+    </Header>
+    <Statement>
+        <Period>
+            <StartDate>2013-01-22</StartDate>
+            <EndDate>2013-03-20</EndDate>
+            <PrepDate>2013-03-20</PrepDate>
+        </Period>
+        <BankSet>
+            <Name>Swedbank AS</Name>
+            <LegalId>40003074764</LegalId>
+            <Address>Balasta dambis 1a</Address>
+        </BankSet>
+        <ClientSet>
+            <Name>tuulilv</Name>
+            <LegalId>111</LegalId>
+        </ClientSet>
+        <AccountSet>
+            <AccNo>LV54HABA0551033283819</AccNo>
+            <CcyStmt>
+                <Ccy>LVL</Ccy>
+                <OpenBal>9998114.59</OpenBal>
+                <CloseBal>-0.56</CloseBal>
+                <TrxSet>
+                    <TypeCode>OUTP</TypeCode>
+                    <TypeName>PRV</TypeName>
+                    <RegDate>2013-03-20</RegDate>
+                    <BookDate>2013-03-20</BookDate>
+                    <ValueDate>2013-03-20</ValueDate>
+                    <BankRef>2013032000441361</BankRef>
+                    <DocNo>666</DocNo>
+                    <CorD>D</CorD>
+                    <AccAmt>0.56</AccAmt>
+                    <PmtInfo><![CDATA[Fidavista payment LV]]></PmtInfo>
+                    <CPartySet>
+                        <AccNo>LV17HABA0551033283806</AccNo>
+                        <AccHolder>
+                            <Name>tuulilv</Name>
+                            <LegalId>111111-11111</LegalId>
+                        </AccHolder>
+                        <BankCode>HABALV22</BankCode>
+                        <Ccy>LVL</Ccy>
+                        <Amt>0.56</Amt>
+                    </CPartySet>
+                </TrxSet>
+                <TrxSet>
+                    <TypeCode>OTHR</TypeCode>
+                    <TypeName>TT</TypeName>
+                    <RegDate/>
+                    <BookDate>2013-03-20</BookDate>
+                    <ValueDate>2013-03-20</ValueDate>
+                    <BankRef>2013032000441361</BankRef>
+                    <CorD>D</CorD>
+                    <AccAmt>0.16</AccAmt>
+                    <PmtInfo><![CDATA[MK teenustasu]]></PmtInfo>
+                    <CPartySet>
+                        <AccNo/>
+                        <BankCode/>
+                        <Ccy>EUR</Ccy>
+                        <Amt>0.16</Amt>
+                    </CPartySet>
+                </TrxSet>
+                <TrxSet>
+                    <TypeCode>OTHR</TypeCode>
+                    <TypeName>X</TypeName>
+                    <RegDate/>
+                    <BookDate>2013-03-22</BookDate>
+                    <ValueDate>2013-03-22 00:00:00.0</ValueDate>
+                    <BankRef>2013032200441415</BankRef>
+                    <CorD>C</CorD>
+                    <AccAmt>0.01</AccAmt>
+                    <PmtInfo><![CDATA[VV: EUR .01-&gt; USD kurss 1.3295]]></PmtInfo>
+                    <CPartySet>
+                        <AccNo/>
+                        <BankCode/>
+                        <Ccy>USD</Ccy>
+                        <Amt>0.01</Amt>
+                    </CPartySet>
+                </TrxSet>
+            </CcyStmt>
+        </AccountSet>
+        <Extension>
+            <Partial>complete</Partial>
+            <Page>1</Page>
+        </Extension>
+    </Statement>
+</FIDAVISTA>
